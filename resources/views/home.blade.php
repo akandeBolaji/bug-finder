@@ -66,6 +66,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 <script>
     const email = @json(Auth::user()->email);
+    const payUrl = "{{route('paystack.post')}}"
 </script>
 <script src="{{asset('js/fund/index.js')}}"></script>
 @endsection

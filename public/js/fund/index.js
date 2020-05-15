@@ -101,13 +101,13 @@ let payWithPaystack = () => {
                 document.getElementById('openPaymentModal').innerText = 'Processing Payment';
 				formData.reference = response.reference;
 				formData.trans = response.trans;
-				// $.post('./ticket-payment', formData, (data, status) => {
-                //     console.log(data);
-                //     window.location.href = '../money-show/tickets#platform';
-				// 	//redirect to dashboard
-				// }).catch(err => {
-				// 	console.log(err);
-				// });
+				$.post(payUrl, formData, (data, status) => {
+                    console.log(data);
+                    window.location.reload();
+					//redirect to dashboard
+				}).catch(err => {
+					console.log(err);
+				});
 			}
 			//alert('success. transaction ref is ' + response.reference);
 		},
