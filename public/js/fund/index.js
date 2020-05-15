@@ -96,9 +96,6 @@ let payWithPaystack = () => {
 		callback: function(response){
 			console.log('yes', response);
 			if (response.status == 'success' & response.message == 'Approved') {
-                document.getElementById('paymentConfirmationModal').style.display = 'none';
-                document.getElementById('openPaymentModal').setAttribute('disabled', true);
-                document.getElementById('openPaymentModal').innerText = 'Processing Payment';
 				formData.reference = response.reference;
 				formData.trans = response.trans;
 				$.post(payUrl, formData, (data, status) => {

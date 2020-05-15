@@ -15,7 +15,7 @@
                     @endif
 
                     <div class="text-center">
-                        <div>BALANCE - <span>{{Auth::user()->balance()}}</span></div>
+                        <div>BALANCE - <span class="text-primary">💰</span><span>{{Auth::user()->balance()}}</span></div>
                         <button type="button" data-toggle="modal" data-target="#paymentModal" class="btn btn-large btn-outline btn-primary text-center">Fund Account</button>
                     </div>
                 </div>
@@ -33,7 +33,6 @@
             </button>
         </div>
         <div class="modal-body">
-            <p>Modal body text goes here.</p>
             <div class="form-group row">
                 <label for="amount" class="col-md-4 col-form-label text-md-right">Amount</label>
 
@@ -67,6 +66,7 @@
 <script>
     const email = @json(Auth::user()->email);
     const payUrl = "{{route('paystack.post')}}"
+    console.log(payUrl);
 </script>
 <script src="{{asset('js/fund/index.js')}}"></script>
 @endsection

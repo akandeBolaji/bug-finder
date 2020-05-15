@@ -23,6 +23,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function() {
     Route::group(['prefix' => '/fund'], function() {
-        Route::post('/paystack', 'FundController@store')->name('paystack.post');
+        Route::post('/paystack', 'FundController@postPaystack')->name('paystack.post');
     });
 });
