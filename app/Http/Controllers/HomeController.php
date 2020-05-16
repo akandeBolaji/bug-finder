@@ -24,7 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $config = Config::get('PAYSTACK_PUBLIC_KEY');
+        //$config = Config::get('paystack.publicKey'); another way
+        $config = getenv('PAYSTACK_PUBLIC_KEY');
         return view('home', ['config' => $config]);
     }
 }

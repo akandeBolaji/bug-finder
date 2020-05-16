@@ -69,8 +69,9 @@
     @endif
     const email = @json(Auth::user()->email);
     const payUrl = "{{route('paystack.post')}}";
-    const key = @json($config);
-    console.log(payUrl);
+    //const key = @json($config); another way
+    const key = @json(getenv('PAYSTACK_PUBLIC_KEY'));
+    console.log(payUrl, key);
 </script>
 <script src="{{asset('js/fund/index.js')}}"></script>
 @endsection
