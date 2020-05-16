@@ -73,13 +73,14 @@ let checkValidation = () => {
 validationListener();
 
 let payWithPaystack = () => {
+    inlinePayButton.setAttribute('disabled', 'true');
 	let formData = {
         email:	email,
 		amount: amount.value * 100
 	};
 
 	var handler = PaystackPop.setup({
-		key: 'pk_test_5d79171e2fca58569a41602a1fdd4887daa4e8f0',
+		key: key,
 		email: formData.email,
 		amount: formData.amount,
 		currency: "NGN",
@@ -94,19 +95,18 @@ let payWithPaystack = () => {
 			]
 		},
 		callback: function(response){
-			console.log('yes', response);
+            console.log('yes', response);
+            inlinePayButton.innerHTML = "Processing...";
 			if (response.status == 'success' & response.message == 'Approved') {
 				formData.reference = response.reference;
 				formData.trans = response.trans;
 				$.post(payUrl, formData, (data, status) => {
                     console.log(data);
                     window.location.reload();
-					//redirect to dashboard
 				}).catch(err => {
 					console.log(err);
 				});
 			}
-			//alert('success. transaction ref is ' + response.reference);
 		},
 		onClose: function(){
 			alert('window closed');

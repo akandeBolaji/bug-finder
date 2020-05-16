@@ -10,7 +10,7 @@ class updateAccountService
 
     public function __construct($amount = null)
     {
-        $this->amount = $amount / 100;
+        $this->amount = $amount;
     }
 
     public function run()

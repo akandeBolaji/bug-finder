@@ -23,6 +23,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function() {
     Route::group(['prefix' => '/fund'], function() {
-        Route::post('/paystack', 'FundController@postPaystack')->name('paystack.post');
+        Route::post('/inline', 'FundController@postPaystack')->name('paystack.post');
+        Route::post('/standard', 'FundController@redirectToGateway')->name('paystack.standard');
+        Route::get('/callback', 'FundController@handleGatewayCallback')->name('paystack.callback');
     });
 });
